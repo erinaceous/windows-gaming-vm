@@ -1,0 +1,23 @@
+#!/bin/bash
+
+
+MAC="52:54:00:df:93:72"
+
+
+function wakeonlan() {
+  # This needs to be ran as root
+  tcpdump -UlnXi bridge0 ether proto 0x0842 or udp port 9 2>/dev/null \
+    | sed -unE 's/^.*20:  (ffff|.... ....) (..)(..) (..)(..) (..)(..).*$/\2:\3:\4:\5:\6:\7/p' | \
+      while read mac; do
+	echo "WOL magic packet detected for $mac"
+        if [[ "$mac" = "$MAC" ]]; then
+            echo "$mac == $MAC, starting windows"
+            virsh start windows
+	    virsh resume windows
+	    virsh dompmwakeup windows
+        fi
+      done
+}
+
+
+wakeonlan

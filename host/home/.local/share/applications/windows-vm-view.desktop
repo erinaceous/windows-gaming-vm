@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=windows-vm
+Name=View Windows
+Comment=Start Looking Glass
+Icon=/home/owanes/.local/share/icons/windows/windows-view.png

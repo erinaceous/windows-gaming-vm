@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Re-Bind GPU to Nvidia Driver
+virsh nodedev-reattach pci_0000_09_00_1
+virsh nodedev-reattach pci_0000_09_00_0
+echo -n "0000:09:00.0" > /sys/bus/pci/drivers/vfio-pci/unbind
+echo -n "0000:09:00.1" > /sys/bus/pci/drivers/vfio-pci/unbind
+#nvidia-smi drain -p 0000:09:00.0 -m 0
+
+# Load nvidia modules
+modprobe nvidia
+modprobe nvidia_modeset
+modprobe nvidia_drm
+modprobe nvidia_uvm

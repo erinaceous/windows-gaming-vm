@@ -1,0 +1,13 @@
+[Unit]
+Description=Start windows VM when WOL received for its MAC
+After=libvirtd.socket
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/local/sbin/wol-windows-vm
+
+[Install]
+WantedBy=multi-user.target

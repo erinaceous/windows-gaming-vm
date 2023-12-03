@@ -1,0 +1,4 @@
+#!/bin/bash
+grub2-reboot 'Windows Boot Manager (on /dev/sdc2)'
+sync
+reboot

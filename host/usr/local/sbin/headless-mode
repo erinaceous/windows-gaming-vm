@@ -1,0 +1,5 @@
+#!/bin/bash
+console=/dev/tty$(fgconsole)
+TERM=linux setterm --powersave powerdown --blank 1 --powerdown 0 >$console <$console
+ls /proc/$(pgrep qemu-system-x)/task | xargs renice -n -2
+systemctl stop gdm

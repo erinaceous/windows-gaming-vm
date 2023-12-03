@@ -1,0 +1,17 @@
+#!/bin/bash
+set -x
+
+export __NV_PRIME_RENDER_OFFLOAD=1
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export DRI_PRIME=1
+
+cmd="${1}"
+shift
+cmd2="${1}"
+shift
+
+extra=""
+if [[ "${cmd} ${cmd2}" = "flatpak run" ]]; then
+  extra="--env=__NV_PRIME_RENDER_OFFLOAD=1 --env=__GLX_VENDOR_LIBRARY_NAME=nvidia --env=DRI_PRIME=1"
+fi
+${cmd} ${cmd2} ${extra} ${*}

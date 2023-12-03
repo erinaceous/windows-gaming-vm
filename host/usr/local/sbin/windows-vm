@@ -1,0 +1,56 @@
+#!/bin/bash
+
+
+function start() {
+  pkexec virsh start windows
+}
+
+
+function view() {
+  # app:allowDMA actually switches it off.
+  # DMA mode slow - radeon wx2100 struggling with 3 screens?? or a mutter bug
+  looking-glass-client \
+    app:allowDMA=yes \
+    app:renderer=egl \
+    egl:doubleBuffer=no \
+    egl:scale=1 \
+    egl:multisample=no \
+    egl:preset=windows1440 \
+    opengl:mipmap=yes \
+    opengl:preventBuffer=yes \
+    opengl:amdPinnedMem=yes \
+    win:title="Windows" \
+    win:autoScreensaver=yes \
+    win:size=2560x1440 \
+    win:position=2560x0 \
+    win:alerts=yes \
+    win:jitRender=no \
+    win:quickSplash=yes \
+    win:borderless=yes \
+    win:fullScreen=no \
+    win:overlayDimsDesktop=no \
+    spice:alwaysShowCursor=yes \
+    input:rawMouse=no \
+    -f /dev/kvmfr0 \
+    -c /tmp/windows.monitor \
+    -p 0
+}
+
+
+function shutdown() {
+  pkexec virsh shutdown windows
+}
+
+
+function start_view() {
+  start
+  view
+}
+
+
+mode="view"
+if [[ "${1}" != "" ]]; then
+  mode="${1}"
+fi
+mkdir -p ~/.local/state/windows
+${mode} > ~/.local/state/windows/${mode}.log 2>&1

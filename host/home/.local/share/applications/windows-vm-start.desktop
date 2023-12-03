@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=windows-vm start
+Name=Start Windows
+Comment=Start Windows
+Icon=/home/owanes/.local/share/icons/windows/windows-start.png

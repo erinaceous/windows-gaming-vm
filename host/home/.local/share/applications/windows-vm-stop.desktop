@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=windows-vm shutdown
+Name=Stop Windows
+Comment=Shutdown Windows
+Icon=/home/owanes/.local/share/icons/windows/windows-stop.png
