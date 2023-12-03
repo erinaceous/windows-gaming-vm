@@ -44,19 +44,19 @@ or other application using the libvirt API.
     <emulatorpin cpuset='6'/>
     <iothreadpin iothread='1' cpuset='7'/>
     <iothreadpin iothread='2' cpuset='8'/>
-    <emulatorsched scheduler='rr' priority='99'/>
-    <vcpusched vcpus='0' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='1' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='2' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='3' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='4' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='5' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='6' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='7' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='8' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='9' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='10' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='11' scheduler='rr' priority='99'/>
+    <emulatorsched scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='0' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='1' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='2' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='3' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='4' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='5' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='6' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='7' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='8' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='9' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='10' scheduler='fifo' priority='99'/>
+    <vcpusched vcpus='11' scheduler='fifo' priority='99'/>
     <iothreadsched iothreads='2' scheduler='batch'/>
   </cputune>
   <os firmware='efi'>

@@ -12,6 +12,7 @@ function view() {
   looking-glass-client \
     app:allowDMA=yes \
     app:renderer=egl \
+    egl:vsync=yes \
     egl:doubleBuffer=no \
     egl:scale=1 \
     egl:multisample=no \
