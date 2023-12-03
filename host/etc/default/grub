@@ -1,0 +1,10 @@
+
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="$(sed 's, release .*$,,g' /etc/system-release)"
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="gfxterm"
+GRUB_GFXPAYLOAD_LINUX="keep"
+GRUB_DISABLE_RECOVERY="true"
+GRUB_ENABLE_BLSCFG=true
+GRUB_CMDLINE_LINUX="iommu=pt amd_iommu=on vfio-pci.ids=10de:2484,10de:228b amd_pstate=guided quiet splash rhgb nvidia-drm.modeset=1 default_hugepagesz=1G hugepagesz=1G hugepages=25 rd.driver.blacklist=nouveau modprobe.blacklist=nouveau vfio_iommu_type1.allow_unsafe_interrupts=1 kvm.ignore_msrs=1"

@@ -20,11 +20,12 @@ or other application using the libvirt API.
   </blkiotune>
   <memoryBacking>
     <hugepages/>
+    <nosharepages/>
     <locked/>
     <allocation mode='immediate'/>
     <discard/>
   </memoryBacking>
-  <vcpu placement='static'>18</vcpu>
+  <vcpu placement='static'>12</vcpu>
   <iothreads>2</iothreads>
   <cputune>
     <shares>2048</shares>
@@ -40,15 +41,9 @@ or other application using the libvirt API.
     <vcpupin vcpu='9' cpuset='15'/>
     <vcpupin vcpu='10' cpuset='16'/>
     <vcpupin vcpu='11' cpuset='17'/>
-    <vcpupin vcpu='12' cpuset='6'/>
-    <vcpupin vcpu='13' cpuset='7'/>
-    <vcpupin vcpu='14' cpuset='8'/>
-    <vcpupin vcpu='15' cpuset='9'/>
-    <vcpupin vcpu='16' cpuset='10'/>
-    <vcpupin vcpu='17' cpuset='11'/>
-    <emulatorpin cpuset='18'/>
-    <iothreadpin iothread='1' cpuset='19'/>
-    <iothreadpin iothread='2' cpuset='19'/>
+    <emulatorpin cpuset='6'/>
+    <iothreadpin iothread='1' cpuset='7'/>
+    <iothreadpin iothread='2' cpuset='8'/>
     <emulatorsched scheduler='rr' priority='99'/>
     <vcpusched vcpus='0' scheduler='rr' priority='99'/>
     <vcpusched vcpus='1' scheduler='rr' priority='99'/>
@@ -62,12 +57,6 @@ or other application using the libvirt API.
     <vcpusched vcpus='9' scheduler='rr' priority='99'/>
     <vcpusched vcpus='10' scheduler='rr' priority='99'/>
     <vcpusched vcpus='11' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='12' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='13' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='14' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='15' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='16' scheduler='rr' priority='99'/>
-    <vcpusched vcpus='17' scheduler='rr' priority='99'/>
     <iothreadsched iothreads='2' scheduler='batch'/>
   </cputune>
   <os firmware='efi'>
@@ -113,15 +102,15 @@ or other application using the libvirt API.
     <ioapic driver='kvm'/>
   </features>
   <cpu mode='host-passthrough' check='none' migratable='off'>
-    <topology sockets='1' dies='1' cores='9' threads='2'/>
+    <topology sockets='1' dies='1' cores='6' threads='2'/>
     <feature policy='require' name='topoext'/>
   </cpu>
   <clock offset='localtime'>
     <timer name='rtc' tickpolicy='catchup'/>
-    <timer name='pit' tickpolicy='delay'/>
-    <timer name='hpet' present='no'/>
+    <timer name='pit' tickpolicy='discard'/>
+    <timer name='hpet' present='no' tickpolicy='discard'/>
     <timer name='hypervclock' present='yes'/>
-    <timer name='tsc' present='yes' mode='native'/>
+    <timer name='tsc' present='yes' tickpolicy='discard' mode='native'/>
     <timer name='kvmclock' present='yes'/>
   </clock>
   <on_poweroff>destroy</on_poweroff>
@@ -336,5 +325,7 @@ or other application using the libvirt API.
     <qemu:arg value='{&quot;driver&quot;:&quot;ivshmem-plain&quot;,&quot;id&quot;:&quot;shmem0&quot;,&quot;memdev&quot;:&quot;looking-glass&quot;}'/>
     <qemu:arg value='-object'/>
     <qemu:arg value='{&quot;qom-type&quot;:&quot;memory-backend-file&quot;,&quot;id&quot;:&quot;looking-glass&quot;,&quot;mem-path&quot;:&quot;/dev/kvmfr0&quot;,&quot;size&quot;:268435456,&quot;share&quot;:true}'/>
+    <qemu:arg value='-fw_cfg'/>
+    <qemu:arg value='opt/ovmf/X-PciMmio64Mb,string=65536'/>
   </qemu:commandline>
 </domain>

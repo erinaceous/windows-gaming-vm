@@ -3,7 +3,7 @@
 set -x
 
 
-AllowedCPUs="20-23"
+AllowedCPUs="9-11,18-23"
 
 
 function isolate_cpus() {
@@ -70,6 +70,9 @@ function passthrough_gpu() {
   virsh nodedev-detach pci_0000_09_00_1
   #echo -n "0000:09:00.1" > /sys/bus/pci/drivers/vfio-pci/bind
   #echo -n "0000:09:00.0" > /sys/bus/pci/drivers/vfio-pci/bind
+  
+  # Set rebar 1 size to 16GB
+  #echo 13 > /sys/bus/pci/devices/0000:09:00.0/resource1_resize
 }
 
 
